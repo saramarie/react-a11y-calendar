@@ -1,8 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import Calendar from './Calendar';
+import Calendar from "./Calendar";
 
 function App() {
   return (
