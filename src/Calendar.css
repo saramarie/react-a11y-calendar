@@ -1,0 +1,39 @@
+:root {
+  --text-color: #222;
+  --text-color-inverse: #fff;
+  --bg-color-inverse: #222;
+}
+
+.calendar {
+  color: var(--text-color);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.month {
+  font-size: 2rem;
+  padding: 0.5rem;
+  grid-column: span 7;
+}
+
+.weekday,
+.date {
+  font-weight: 500;
+}
+
+.weekday {
+  color: var(--text-color-inverse);
+  background: var(--bg-color-inverse);
+  padding: 0.5rem;
+}
+
+.date {
+  text-align: right;
+  padding: 0.5rem;
+  border: 1px solid var(--bg-color-inverse);
+  border-width: 0 1px 1px 0;
+}
+
+.date:nth-child(7n + 2) {
+  border-left-width: 1px;
+}

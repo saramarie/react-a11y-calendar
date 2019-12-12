@@ -1,13 +1,14 @@
-import React, { Fragment } from 'react';
+import React from "react";
+import "./Calendar.css";
 
 const daysOfWeek = [
-  { name: 'Sunday' },
-  { name: 'Monday' },
-  { name: 'Tuesday' },
-  { name: 'Wednesday' },
-  { name: 'Thursday' },
-  { name: 'Friday' },
-  { name: 'Saturday' }
+  { name: "Sunday" },
+  { name: "Monday" },
+  { name: "Tuesday" },
+  { name: "Wednesday" },
+  { name: "Thursday" },
+  { name: "Friday" },
+  { name: "Saturday" }
 ];
 
 export function getNumberOfWeeks(numDays) {
@@ -32,13 +33,11 @@ export function getMonthDates(month, year) {
   const prevMonthDates = getPreviousMonthDates(month, year);
   const numDaysInMonth = getDaysInMonth(month, year);
   const currMonthDates = getDatesArray(numDaysInMonth);
-  const remainderDates = getRemainderDates(prevMonthDates.length + numDaysInMonth);
+  const remainderDates = getRemainderDates(
+    prevMonthDates.length + numDaysInMonth
+  );
 
-  return [
-    ...prevMonthDates,
-    ...currMonthDates,
-    ...remainderDates
-  ];
+  return [...prevMonthDates, ...currMonthDates, ...remainderDates];
 }
 
 export function getPreviousMonthDates(month, year) {
@@ -52,41 +51,41 @@ export function getPreviousMonthDates(month, year) {
 }
 
 export function getFirstDayOfMonth(month, year) {
-  const date = new Date(year , month);
+  const date = new Date(year, month);
   const dateYear = date.getFullYear();
   const dateMonth = date.getMonth();
   return new Date(dateYear, dateMonth).getDay();
 }
 
 export function getDaysInMonth(month, year) {
-  const date = new Date(year , month);
+  const date = new Date(year, month);
   const dateYear = date.getFullYear();
   const dateMonth = date.getMonth();
   return new Date(dateYear, dateMonth + 1, 0).getDate();
 }
 
 export function getCurrentYear() {
-  return (new Date()).getFullYear();
+  return new Date().getFullYear();
 }
 
 export function getCurrentMonth() {
-  return (new Date()).getMonth();
+  return new Date().getMonth();
 }
 
 export function getMonthName(month) {
   const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
   ];
 
   return monthNames[month];
@@ -94,19 +93,17 @@ export function getMonthName(month) {
 
 function Calendar() {
   return (
-    <Fragment>
-      <div>{getMonthName(getCurrentMonth())}</div>
-      <div>
-        {daysOfWeek.map(day => (
-          <span key={day.name}>{day.name}</span>
-        ))}
-      </div>
-      <div>
-        {getMonthDates(getCurrentMonth(), getCurrentYear()).map((date) => (
-          <span>{date}</span>
-        ))}
-      </div>
-    </Fragment>
+    <div className="calendar">
+      <div className="month">{getMonthName(getCurrentMonth())}</div>
+      {daysOfWeek.map(day => (
+        <div className="weekday" key={day.name}>
+          {day.name}
+        </div>
+      ))}
+      {getMonthDates(getCurrentMonth(), getCurrentYear()).map(date => (
+        <div className="date">{date}</div>
+      ))}
+    </div>
   );
 }
 
