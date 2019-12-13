@@ -1,4 +1,5 @@
 import React from "react";
+import { uuid } from "uuidv4";
 import "./Calendar.css";
 
 const daysOfWeek = [
@@ -15,10 +16,10 @@ export function getNumberOfWeeks(numDays) {
   return Math.ceil(numDays / daysOfWeek.length);
 }
 
-export function getDatesArray(numDays) {
+export function getDatesArray(numDays, type = "current") {
   const dates = [];
   for (let i = 1; i <= numDays; i++) {
-    dates.push(i);
+    dates.push({ type, number: i });
   }
   return dates;
 }
@@ -26,7 +27,7 @@ export function getDatesArray(numDays) {
 export function getRemainderDates(numDates) {
   const numWeeksToShow = getNumberOfWeeks(numDates);
   const numDaysToPrint = numWeeksToShow * daysOfWeek.length;
-  return getDatesArray(numDaysToPrint - numDates);
+  return getDatesArray(numDaysToPrint - numDates, "next");
 }
 
 export function getMonthDates(month, year) {
@@ -45,7 +46,7 @@ export function getPreviousMonthDates(month, year) {
   const prevMonthDays = getDaysInMonth(month - 1, year);
   const dates = [];
   for (let i = 0; i < startIndex; i++) {
-    dates.push(prevMonthDays - i);
+    dates.push({ type: "previous", number: prevMonthDays - i });
   }
   return dates.reverse();
 }
@@ -101,7 +102,9 @@ function Calendar() {
         </div>
       ))}
       {getMonthDates(getCurrentMonth(), getCurrentYear()).map(date => (
-        <div className="date">{date}</div>
+        <div className={`date ${date.type}`} key={uuid()}>
+          {date.number}
+        </div>
       ))}
     </div>
   );

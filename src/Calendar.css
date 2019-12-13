@@ -1,6 +1,7 @@
 :root {
   --text-color: #222;
   --text-color-inverse: #fff;
+  --text-color-light: #999;
   --bg-color-inverse: #222;
 }
 
@@ -36,4 +37,9 @@
 
 .date:nth-child(7n + 2) {
   border-left-width: 1px;
+}
+
+.date.previous,
+.date.next {
+  color: var(--text-color-light);
 }
