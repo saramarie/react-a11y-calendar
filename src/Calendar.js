@@ -94,8 +94,8 @@ export function getMonthName(month) {
 
 function Calendar() {
   return (
-    <div className="calendar">
-      <div className="month">{getMonthName(getCurrentMonth())}</div>
+    <section className="calendar">
+      <h2 className="month">{getMonthName(getCurrentMonth())}</h2>
       {daysOfWeek.map(day => (
         <div className="weekday" key={day.name}>
           {day.name}
@@ -106,7 +106,7 @@ function Calendar() {
           {date.number}
         </div>
       ))}
-    </div>
+    </section>
   );
 }
 

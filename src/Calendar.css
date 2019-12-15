@@ -13,6 +13,8 @@
 
 .month {
   font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
   padding: 0.5rem;
   grid-column: span 7;
 }
