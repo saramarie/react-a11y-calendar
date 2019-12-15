@@ -117,13 +117,21 @@ function Calendar() {
   return (
     <section className="calendar">
       <header className="heading">
-        <button type="button" onClick={decrementMonth}>
+        <button
+          type="button"
+          onClick={decrementMonth}
+          aria-label="View previous month"
+        >
           &larr; Previous
         </button>
-        <h2 className="month">
+        <h2 className="month" aria-live="polite">
           {getMonthName(month)} {year}
         </h2>
-        <button type="button" onClick={incrementMonth}>
+        <button
+          type="button"
+          onClick={incrementMonth}
+          aria-label="View next month"
+        >
           Next &rarr;
         </button>
       </header>
