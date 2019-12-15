@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { uuid } from "uuidv4";
 import "./Calendar.css";
 
@@ -93,15 +93,46 @@ export function getMonthName(month) {
 }
 
 function Calendar() {
+  const [month, setMonth] = useState(getCurrentMonth());
+  const [year, setYear] = useState(getCurrentYear());
+
+  const decrementMonth = () => {
+    if (month === 0) {
+      setYear(year - 1);
+      return setMonth(11);
+    }
+
+    return setMonth(month - 1);
+  };
+
+  const incrementMonth = () => {
+    if (month === 11) {
+      setYear(year + 1);
+      return setMonth(0);
+    }
+
+    return setMonth(month + 1);
+  };
+
   return (
     <section className="calendar">
-      <h2 className="month">{getMonthName(getCurrentMonth())}</h2>
+      <header className="heading">
+        <button type="button" onClick={decrementMonth}>
+          &larr; Previous
+        </button>
+        <h2 className="month">
+          {getMonthName(month)} {year}
+        </h2>
+        <button type="button" onClick={incrementMonth}>
+          Next &rarr;
+        </button>
+      </header>
       {daysOfWeek.map(day => (
         <div className="weekday" key={day.name}>
           {day.name}
         </div>
       ))}
-      {getMonthDates(getCurrentMonth(), getCurrentYear()).map(date => (
+      {getMonthDates(month, getCurrentYear()).map(date => (
         <div className={`date ${date.type}`} key={uuid()}>
           {date.number}
         </div>

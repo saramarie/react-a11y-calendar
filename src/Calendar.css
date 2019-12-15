@@ -11,12 +11,18 @@
   grid-template-columns: repeat(7, 1fr);
 }
 
+.heading {
+  grid-column: span 7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .month {
   font-size: 2rem;
   font-weight: 400;
   margin: 0;
   padding: 0.5rem;
-  grid-column: span 7;
 }
 
 .weekday,
