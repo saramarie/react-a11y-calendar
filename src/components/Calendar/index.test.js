@@ -2,7 +2,6 @@ import React from "react";
 import MockDate from "mockdate";
 import Calendar, {
   getCurrentMonth,
-  getMonthName,
   getCurrentYear,
   getFirstDayOfMonth,
   getDaysInMonth,
@@ -12,7 +11,7 @@ import Calendar, {
   getNumberOfWeeks,
   getDatesArray,
   getRemainderDates
-} from "./Calendar";
+} from ".";
 
 beforeEach(() => {
   MockDate.set(1570210581412);
@@ -83,11 +82,6 @@ it("getCurrentYear() returns the current year", () => {
 
 it("getCurrentMonth() returns the zero-index number of the current month", () => {
   expect(getCurrentMonth()).toEqual(9);
-});
-
-it("getMonthName() returns the full name of a given month", () => {
-  const mockMonth = 5;
-  expect(getMonthName(mockMonth)).toEqual("June");
 });
 
 it("getFirstDayOfMonth() returns a zero-index number of the week for the first day of a given month", () => {
