@@ -1,5 +1,4 @@
 import React from "react";
-
 import Heading, { getMonthName } from ".";
 
 it("getMonthName() returns the full name of a given month", () => {
