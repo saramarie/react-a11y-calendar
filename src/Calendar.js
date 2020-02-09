@@ -140,7 +140,7 @@ function Calendar() {
           {day.name}
         </div>
       ))}
-      {getMonthDates(month, getCurrentYear()).map(date => (
+      {getMonthDates(month, year).map(date => (
         <div className={`date ${date.type}`} key={uuid()}>
           {date.number}
         </div>
